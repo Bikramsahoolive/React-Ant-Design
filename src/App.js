@@ -12,9 +12,11 @@ import {
   DatePicker,
   Spin,
   Progress,
-  Tag
+  Tag,
+  Modal
+  
 } from 'antd';
-import {PoweroffOutlined,UserOutlined} from '@ant-design/icons';
+import Icon, {PoweroffOutlined,UserOutlined,DownloadOutlined ,SyncOutlined,SmileTwoTone,HeartTwoTone,CheckCircleTwoTone} from '@ant-design/icons';
 function App() {
 
   const fruits = ['Apple','Banana','coconut','orange'];
@@ -38,6 +40,22 @@ function App() {
     {id:4,name:'Name4',email:'myemail4@test.com',age:24,completed :false},
     {id:5,name:'Name5',email:'myemail5@test.com',age:25,completed :true}
   ]
+
+
+// Modal.confirm({
+//   title:'Are you sure to delete the record.',
+//   okText:'Delete',
+//   okType:'danger',
+//   cancelText:'No',
+//   closable:true,
+//   onOk:()=>{
+//     Modal.success({title:'Deleted Successfully.'})
+//   },
+//   onCanconel:()=>{
+//     Modal.error({title:'Delete unsuccessfully.'})
+//   }
+// })
+
 
   const columns = [
     {title:"Name", dataIndex:'name', key:'id' ,
@@ -84,8 +102,20 @@ function App() {
     console.log(data);
     
   }
+
+  const HeartIcon = (props)=>{
+    return <Icon
+    component={()=>{
+      return (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
+      <path d="M12 2C9.243 2 7 4.243 7 7V10H5C4.447 10 4 10.447 4 11V20C4 20.553 4.447 21 5 21H19C19.553 21 20 20.553 20 20V11C20 10.447 19.553 10 19 10H17V7C17 4.243 14.757 2 12 2ZM12 4C13.657 4 15 5.343 15 7V10H9V7C9 5.343 10.343 4 12 4ZM6 12H18V19H6V12ZM12 16C13.104 16 14 16.896 14 18C14 19.104 13.104 20 12 20C10.896 20 10 19.104 10 18C10 16.896 10.896 16 12 16Z" fill="#FF6F00"/>
+    </svg>);  
+    }}
+    {...props}/>
+  }
   return (
     <>
+
+
     {/* <Button 
     type="primary"
     block
@@ -171,21 +201,24 @@ function App() {
   <Progress percent={33} type='line' status='active' strokeWidth={25} />
   <Progress percent={33} type='line'  steps={3} /> */}
 
-    <Table
+
+
+
+
+    {/* <Table
     dataSource={studentData}
     columns={studentColumns}
     rowSelection={{
       type:'checkbox',
       onSelect:(record)=>{
         // console.log(record);
-        
       },
       selectedRowKeys:selectedRowKeys,
       onChange:(keys)=>{
         setSelectedRowKeys(keys);
         
       },
-      getCheckboxProps:(record)=>({disabled:record.grade ==='c'}),
+      getCheckboxProps: (record) => ({disabled: record.grade === 'C'}),
       hideSelectAll:false,
       selections:[
         Table.SELECTION_NONE,
@@ -225,7 +258,24 @@ function App() {
     <Button type="primary"
     block
     onClick={logRecords}
-    >Submit</Button>
+    >Submit</Button> */}
+
+
+
+{/* <DownloadOutlined rotate={-90} twoToneColor={'green'} style={{fontSize:'50px'}}/>
+<SyncOutlined spin style={{fontSize:'50px'}}/>
+<SmileTwoTone  style={{fontSize:'50px'}} />
+<HeartTwoTone twoToneColor="#eb2f96" style={{fontSize:'50px'}}/>
+<CheckCircleTwoTone twoToneColor="#52c41a" style={{fontSize:'50px'}}/> */}
+
+{/* custom icon */}
+{/* <HeartIcon style={{ transform: 'scale(5)', margin:'200px' }}/> */}
+
+
+
+
+
+
   </>
    );
 }
